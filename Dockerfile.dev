@@ -1,11 +1,11 @@
 # 베이스 파일을 명시
-FROM node:alpine
+FROM node:alpine as builder
 
 #Create App Directory
-WORKDIR /usr/src/app
+WORKDIR '/usr/src/app'
 
 #종속성을 매번 인스톨 하지 않기 위해
-COPY package.json ./
+COPY package.json .
 
 # 추가적으로 필요한 파일을 다운로드
 RUN npm install
