@@ -2,10 +2,10 @@
 FROM node:alpine as builder
 
 #Create App Directory
-WORKDIR /usr/src/app
+WORKDIR '/usr/src/app'
 
 #종속성을 매번 인스톨 하지 않기 위해
-COPY package.json ./
+COPY package.json .
 
 # 추가적으로 필요한 파일을 다운로드
 RUN npm install
@@ -14,7 +14,7 @@ RUN npm install
 COPY ./ ./
 
 # 컨테이너 시작시 실행될 명령어를 명시
-CMD ["npm", "run", "build"]
+RUN npm run build
 
 # nginx가 Client 요청에 따라 알맞은 정적 파일 제공을 위해 Build 데이터 -> nginx로 복사
 FROM nginx
