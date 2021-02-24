@@ -18,5 +18,6 @@ CMD ["npm", "run", "build"]
 
 # nginx가 Client 요청에 따라 알맞은 정적 파일 제공을 위해 Build 데이터 -> nginx로 복사
 FROM nginx
+EXPOSE 80
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 
