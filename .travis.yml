@@ -7,6 +7,7 @@ services:
 
 before_install:
   - echo "start creating an image with dockerfile"
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t mizeloble/docker-react-app -f Dockerfile.dev .
 
 script: 
